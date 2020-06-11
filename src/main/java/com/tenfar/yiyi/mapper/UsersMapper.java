@@ -1,20 +1,10 @@
 package com.tenfar.yiyi.mapper;
 
 import com.tenfar.yiyi.model.Users;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Mapper;import org.apache.ibatis.annotations.Param;
 
-/**
- * @author tenfar
- */
 @Mapper
 public interface UsersMapper {
-    /**
-     * 按主键ID删除对应行
-     *
-     * @param id 主键ID
-     * @return 被影响的行数
-     */
     int deleteByPrimaryKey(String id);
 
     int insert(Users record);
@@ -27,7 +17,5 @@ public interface UsersMapper {
 
     int updateByPrimaryKey(Users record);
 
-    Users findOneByName(@Param("name") String name);
-
-
+    Users findOneByName(@Param("username") String username);
 }
