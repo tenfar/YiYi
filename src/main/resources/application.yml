@@ -51,6 +51,7 @@ spring:
         pool-prepared-statements: true
         max-pool-prepared-statement-per-connection-size: 20
         connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        aop-patterns: com.tenfar.yiyi.mapper.*
       slave:
         url: jdbc:mysql://localhost:3308/yiyi?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
         username: root
@@ -70,6 +71,7 @@ spring:
         pool-prepared-statements: true
         max-pool-prepared-statement-per-connection-size: 20
         connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        aop-patterns: com.tenfar.yiyi.mapper.*
 
 
 swagger:
