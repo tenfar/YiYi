@@ -31,6 +31,7 @@ public class YiYiApplication {
                 "Local: \t\thttp://localhost:" + port + path + "/\n\t" +
                 "External: \thttp://" + ip + ":" + port + path + "/\n\t" +
                 "Swagger-UI: \t\thttp://" + ip + ":" + port + path + "/doc.html\n" +
+                "Druid-UI: \t\thttp://" + ip + ":" + port + path + "/druid\n" +
                 "----------------------------------------------------------");
 
     }
