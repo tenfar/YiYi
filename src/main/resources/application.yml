@@ -1,4 +1,13 @@
 spring:
+  layering-cache:
+    allow:
+    deny:
+    enable-update: true
+    layering-cache-servlet-enabled: true
+    login-password: admin
+    login-username: admin
+    stats: true
+    url-pattern: /layering-cache/*
   servlet:
     multipart:
       max-file-size: 10240000
@@ -9,15 +18,44 @@ spring:
     name: yiyi
   resource:
     static-locations: classpath:/static/,classpath:/public/
-
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379  #可不配，因为底层默认值为6379
+#    pool:
+#      max-active: 100 #连接池最大连接数（负值表示没有限制）
+#      max-wait: 3000 #连接池最大阻塞等待时间（负值表示没有限制）
+#      max-idle: 200 #连接池最大空闭连接数
+#      min-idle: 50 #连接汉最小空闲连接数
+#      timeout: 600 #连接超时时间（毫秒）
+#    cluster:
+#      nodes:
+#        - 192.168.75.132:6380
+#        - 192.168.75.132:6381
+#        - 192.168.75.132:6382
+#        - 192.168.75.132:6383
+#        - 192.168.75.132:6384
+#        - 192.168.75.132:6385
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.tenfar.yiyi.model
 
+
 server:
   port: 8010
+  undertow:
+    # 以下的配置会影响buffer,这些buffer会用于服务器连接的IO操作,有点类似netty的池化内存管理
+    # 每块buffer的空间大小,越小的空间被利用越充分
+    buffer-size: 1024
+    # 是否分配的直接内存
+    direct-buffers: true
+    threads:
+      # 设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程
+      io: 4
+      # 阻塞任务线程池, 当执行类似servlet请求阻塞操作, undertow会从这个线程池中取得线程,它的值设置取决于系统的负载
+      worker: 20
   servlet:
     context-path:
 
